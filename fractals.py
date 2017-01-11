@@ -9,7 +9,8 @@ num_sides = 0
 window = turtle.Screen()
 window.bgcolor("orange")
 alice = turtle.Turtle()
-length1= 100
+start_length=250
+
 def draw_triangle(side_len):
 	for i in range (1, 4):
 		alice.forward(side_len)
@@ -24,15 +25,31 @@ def draw_fractal(side_len):
 	alice.forward(side_len)
 	alice.right(120)
 	draw_triangle(side_len)
-	side_len = side_len/2
-	return side_len
+	alice.right(120)
 	
 	
+def draw_inception(length1):	
+	draw_fractal(length1)
+	length1=length1/2
+	draw_fractal(length1)
+	alice.forward(length1)
+	alice.right(120)
+	draw_fractal(length1)
+	alice.forward(length1)
+	alice.left (60)
+	alice.forward(length1*2)
+	alice.left (60)
+	draw_fractal(length1)
 
-length1 = draw_fractal(length1)
-length1 = draw_fractal(length1)
-length1 = draw_fractal(length1)
-
+draw_inception(start_length)
+start_length = start_length/2
+draw_inception(start_length)
+start_length = start_length/2
+draw_inception(start_length)
+start_length = start_length/2
+draw_inception(start_length)
+start_length = start_length/2
+draw_inception(start_length)
 
 window.exitonclick()
 	
